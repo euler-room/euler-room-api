@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  require 'json_web_token'
   protected def authenticate_request!
     if !payload || !JsonWebToken.valid_payload(payload.first)
       return invalid_authentication
@@ -22,5 +23,9 @@ class ApplicationController < ActionController::API
 
   private def load_current_user!
     @current_user = User.find_by(id: payload[0]['user_id'])
+  end
+
+  private def base_params
+    @base_params ||= params.require(:data).require(:attributes)
   end
 end

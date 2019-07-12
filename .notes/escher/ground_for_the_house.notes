@@ -1,0 +1,82 @@
+// As the input data you will get the multiline string consists of '0' & '#'.
+// where '0' means the empty piece of the ground and the '#' is the piece of your
+// house. Your task is to count the minimal area of the rectangle ground which is
+// enough for the building.
+//
+// Input:
+// - The plan of the house.
+//
+// Output:
+// - The total area of the rectangle piece of the ground.
+//
+// Precondition:
+// - 2x2 <= multiline string <= 10x10
+//
+///////////////////////////////////////////////////////////////////////////////
+"use strict";
+
+function house(plan) {
+    console.log(plan)
+    if(!plan.match(/#/)) return 0;
+    var min_row = -1;
+    var max_row = -1;
+    var min_col = 11;
+    var max_col = -1;
+    plan = plan.split("\n");
+    plan.forEach(function(row, index){
+      if(/#/.test(row)) {
+        max_row = index;
+        if(min_row < 0) min_row = index;
+        var tmp_min = row.match(/#/)['index']
+        var tmp_max = row.match(/(#)(?!.*\1)/)['index']
+        if(max_col < tmp_max) max_col = tmp_max
+        if(min_col > tmp_min) min_col = tmp_min
+      }
+    });
+    return (1 + max_row - min_row) * (1 + max_col - min_col);
+}
+
+
+var assert = require('assert');
+if (!global.is_checking) {
+    console.log('Example:')
+    console.log(house(`
+0000000
+##00##0
+######0
+##00##0
+#0000#0
+`))
+
+    // These "asserts" are used for self-checking and not for an auto-testing
+    assert.equal(house(`
+0000000
+##00##0
+######0
+##00##0
+#0000#0
+`), 24)
+
+    assert.equal(house(`0000000000
+#000##000#
+##########
+##000000##
+0000000000
+`), 30)
+
+    assert.equal(house(`0000
+0000
+#000
+`), 1)
+
+    assert.equal(house(`0000
+0000
+`), 0)
+
+    assert.equal(house(`0##0
+0000
+#00#
+`), 12)
+
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

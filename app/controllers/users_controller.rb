@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  require 'json_web_token'
-  before_action :authenticate_request!, only: [:show, :index, :update]
+  before_action :authenticate_request!, only: [:show, :index, :update, :destroy]
+
   def login
     user = User.find_by(email: login_params[:email].to_s.downcase)
     if user && user.authenticate(login_params[:password])
@@ -36,8 +36,25 @@ class UsersController < ApplicationController
   end
 
   def update
-    User.find(params[:id]).update_attributes(update_params)
+    user = User.find(params[:id])
+
+    if user.update(user_params)
+      render json: {status: 'User updated successfully'}, status: :updated
+    else
+      render json: { errors: user.errors.full_messages }, status: :bad_request
+    end
   end
+
+  def destroy
+    user = User.find(params[:id])
+
+    if user.destroy
+      render json: {status: 'User destroyed successfully'}, status: :destroyed
+    else
+      render json: { errors: user.errors.full_messages }, status: :bad_request
+    end
+  end
+
 
   def confirm
     token = confirmation_params[:token].to_s
@@ -53,7 +70,7 @@ class UsersController < ApplicationController
   end
 
   private def user_params
-    params.require(:data).require(:attributes)
+    base_params
       .permit(:first_name,
               :last_name,
               :email,
@@ -63,12 +80,12 @@ class UsersController < ApplicationController
   end
 
   private def login_params
-    params.require(:data).require(:attributes)
+    base_params
       .permit(:email, :username, :password)
   end
 
   private def confirmation_params
-    params.require(:data).require(:attributes)
+    base_params
       .permit(:token)
   end
 end

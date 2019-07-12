@@ -1,0 +1,70 @@
+// Your task is to count the sum of the number of steps required to pick up all
+// 3 items - ('C' - compass), ('M' - map), ('S' - spyglass) from your starting
+// position. So the result will be the sum of distance from Y to C, from Y to M
+// and from Y to S (not Y-C-M-S).
+//
+// Note that you can walk in 8 directions - left, right, up, down and sideways
+// (on the diagonal in any direction). Your starting position is 'Y'.
+//
+// Input:
+// - Array with the objects placements.
+//
+// Output:
+// - The length of the path.
+//
+// Precondition:
+// - 3x3 <= array size <= 10x10
+//
+///////////////////////////////////////////////////////////////////////////////
+
+"use strict";
+
+function navigation(seaside) {
+  var y = []
+  var points = { 'c': [], 'm': [], 's': [] }
+  var dist = 0;
+  seaside.forEach(function(row, index){
+    if(row.indexOf('Y') >= 0) y = [index, row.indexOf('Y') ]
+    if(row.indexOf('C') >= 0) points['c'] = [index, row.indexOf('C') ]
+    if(row.indexOf('M') >= 0) points['m'] = [index, row.indexOf('M') ]
+    if(row.indexOf('S') >= 0) points['s'] = [index, row.indexOf('S') ]
+  })
+  Object.keys(points).forEach(function(point){
+    dist += distance(y, points[point])
+  })
+
+  return dist;
+}
+
+function distance(p1, p2){
+  var dx = Math.abs(p1[0] - p2[0]);
+  var dy = Math.abs(p1[1] - p2[1]);
+  return Math.max(dx, dy);
+}
+
+var assert = require('assert');
+if (!global.is_checking) {
+    console.log('Example:')
+    console.log(navigation([['Y', 0, 0, 0, 'C'],
+                            [ 0,  0, 0, 0,  0],
+                            [ 0,  0, 0, 0,  0],
+                            ['M', 0, 0, 0, 'S']]))
+
+    // These "asserts" are used for self-checking and not for an auto-testing
+    assert.equal(navigation([['Y', 0, 0, 0, 'C'],
+                             [ 0,  0, 0, 0,  0],
+                             [ 0,  0, 0, 0,  0],
+                             ['M', 0, 0, 0, 'S']]), 11)
+
+    assert.equal(navigation([[ 0,  0, 'C'],
+                             [ 0, 'S', 0],
+                             ['M','Y', 0]]), 4)
+
+    assert.equal(navigation([[ 0,  0, 0,  0,  0,  0,  0],
+                             [ 0,  0, 0, 'M', 0, 'S', 0],
+                             [ 0,  0, 0,  0,  0,  0,  0],
+                             [ 0,  0, 0, 'C', 0,  0,  0],
+                             [ 0, 'Y',0,  0,  0,  0,  0],
+                             [ 0,  0, 0,  0,  0,  0,  0]]), 9)
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

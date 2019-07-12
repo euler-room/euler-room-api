@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       post 'login'
     end
   end
+
+  resources :problems
 end
