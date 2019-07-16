@@ -1,3 +1,3 @@
 
-class Api::V3::BadRequestError < StandardError
+class BadRequestError < StandardError
 end
