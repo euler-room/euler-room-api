@@ -1,12 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  validates_presence_of   :email
-  validates_uniqueness_of :email, case_sensitive: false
-  validates_format_of     :email, with: /@/
   validates_presence_of   :username
   validates_uniqueness_of :username, case_sensitive: true
 
-  before_save   :downcase_email
   before_create :generate_confirmation_instructions
 
   def confirmation_token_valid?

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_request!, only: [:show, :index, :update, :destroy]
 
   def login
-    user = User.find_by(email: login_params[:email].to_s.downcase)
+    user = User.find_by(email: login_params[:email].to_s.downcase) #|| User.find_by(username: login_params[:username].to_s)
     if user && user.authenticate(login_params[:password])
       if user.confirmed_at?
         auth_token = JsonWebToken.encode({user_id: user.id})

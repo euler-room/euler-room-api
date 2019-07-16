@@ -48,4 +48,4 @@ r1 = Rational(19 , 95)
 r2 = Rational(26 , 65)
 r3 = Rational(49 , 98)
 
-r0 * r1 * r2 * r3
+puts (r0 * r1 * r2 * r3).denominator

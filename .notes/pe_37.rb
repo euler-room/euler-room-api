@@ -14,6 +14,7 @@
 # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 #
 ####################################################################################################
+require 'prime'
 
 def check(prime)
   pa = prime.to_s.split("")
