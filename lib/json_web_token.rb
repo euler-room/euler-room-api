@@ -1,6 +1,7 @@
 require 'jwt'
 
 class JsonWebToken
+  ENV['DEVISE_JWT_SECRET_KEY'] = "random_bytes_aslkdjhfkl;sdjhgflk" unless Rails.env=='production'
   # Encodes and signs JWT Payload with expiration
   def self.encode(payload)
     payload.reverse_merge!(meta)
