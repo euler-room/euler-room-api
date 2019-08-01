@@ -10,7 +10,11 @@ while true do
   i0 = i1
   i1 = tmp
 end
-sum
+puts sum
 
 
 4613732
+
+
+
+"<p>&nbsp&nbsp&nbsp&nbspEven Fibonacci numbers</p><br/><p>&nbsp&nbsp&nbsp&nbspi0 = 1</p><p>&nbsp&nbsp&nbsp&nbspi1 = 1</p><p>&nbsp&nbsp&nbsp&nbspsum = 0</p><p>&nbsp&nbsp&nbsp&nbspwhile true do</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsptmp = i0 + i1</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbreak if tmp > 4_000_000</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspsum += tmp if tmp % 2 == 0</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspi0 = i1</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspi1 = tmp</p><p>&nbsp&nbsp&nbsp&nbspend</p><p>&nbsp&nbsp&nbsp&nbspputs sum</p>"

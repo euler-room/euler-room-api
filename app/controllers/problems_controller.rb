@@ -42,11 +42,11 @@ class ProblemsController < ApplicationController
 
   private def problem_params
     base_params
-      .permit(:title, :solution, :solution_type, :description)
+      .permit(:title, :solution, :solution_type, :description, :solution_text)
   end
 
   private def solution_params
     base_params
-      .permit(:soluition)
+      .permit(:solution)
   end
 end

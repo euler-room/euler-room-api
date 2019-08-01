@@ -24,6 +24,8 @@ spiral = [
   [37, 36, 35, 34, 33, 32, 31],
 ]
 
+
+n = 1001
 cur = 0
 res = 0
 if n%2 == 0
@@ -32,17 +34,15 @@ else
   skipper = 2
 end
 
-ary = *(1..n**2)
+ary = *(1..n**2);nil
 
 while ary[cur + 1]
   (0..3).each do |step|
-    puts ary[cur]
     res += ary[cur]
     cur+= skipper
   end
   skipper += 2
 end
-puts ary.last
 res += ary[cur]
 
 #.................................. 0  -
@@ -115,7 +115,8 @@ step_order = [r, d, l, u]
 step_order = ['r', 'd', 'l', 'u']
 
 
-[ r,
+[
+  r,
   d,
   l, l,
   u, u,
@@ -127,15 +128,11 @@ step_order = ['r', 'd', 'l', 'u']
   d, d, d, d, d,
   l, l, l, l, l, l,
   u, u, u, u, u, u,
-  r, r, r, r, r, r, r,
+  r, r, r, r, r, r, r
 ]
 
 
 
-u = [-1, 0]
-r = [0, 1]
-l = [0, -1]
-d = [1, 0]
 
 def cycle(n)
   if n%2 == 0
@@ -155,6 +152,12 @@ end
 def can_go?(direction)
 
 end
+
+
+u = [-1, 0]
+r = [0, 1]
+l = [0, -1]
+d = [1, 0]
 
 step_order = [r, d, l, u]
 step_order_strings = ['r', 'd', 'l', 'u']
@@ -177,3 +180,4 @@ end
 
 next_step = Proc.new { |n| puts "#{n}: #{direction}" }
 
+"<p>&nbsp&nbsp&nbsp&nbspn = 1001</p><p>&nbsp&nbsp&nbsp&nbspcur = 0</p><p>&nbsp&nbsp&nbsp&nbspres = 0</p><p>&nbsp&nbsp&nbsp&nbspif n%2 == 0</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspskipper = 1</p><p>&nbsp&nbsp&nbsp&nbspelse</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspskipper = 2</p><p>&nbsp&nbsp&nbsp&nbspend</p><p>&nbsp&nbsp&nbsp&nbsp</p><p>&nbsp&nbsp&nbsp&nbspary = *(1..n**2);nil</p><p>&nbsp&nbsp&nbsp&nbsp</p><p>&nbsp&nbsp&nbsp&nbspwhile ary[cur + 1]</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(0..3).each do |step|</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspres += ary[cur]</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspcur+= skipper</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspend</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspskipper += 2</p><p>&nbsp&nbsp&nbsp&nbspend</p><p>&nbsp&nbsp&nbsp&nbspres += ary[cur]</p>"
