@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     user = User.find_by(email: login_params[:email].to_s.downcase) || User.find_by(username: login_params[:username].to_s)
     if user && user.authenticate(login_params[:password])
       if user.confirmed_at?
-        auth_token = JsonWebToken.encode({user_id: user.id})
-        render json: {auth_token: auth_token}, status: :ok
+        user.auth_token = JsonWebToken.encode({user_id: user.id})
+        render json: UserSerializer.new(user).serialized_json
       else
         render json: {error: 'Email not verified' }, status: :unauthorized
       end

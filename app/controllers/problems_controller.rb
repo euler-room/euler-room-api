@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  # before_action :authenticate_request!, only: [:show, :index, :update, :create]
+  before_action :authenticate_request!, only: [:update, :create]
   def show
     problem = Problem.find(params[:id])
     render json: ProblemSerializer.new(problem).serialized_json
