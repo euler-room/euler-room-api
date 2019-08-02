@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_request!, only: [:show, :index, :update, :destroy]
+  before_action :authenticate_request!, only: [:show, :index, :destroy]
 
   def login
     user = User.find_by(email: login_params[:email].to_s.downcase) || User.find_by(username: login_params[:username].to_s)
@@ -76,7 +76,8 @@ class UsersController < ApplicationController
               :email,
               :username,
               :password,
-              :password_confirmation)
+              :password_confirmation,
+              :cover_letter_url)
   end
 
   private def login_params

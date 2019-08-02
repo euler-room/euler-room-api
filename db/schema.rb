@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2019_08_02_202312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cover_letters", force: :cascade do |t|
+    t.string "url"
+    t.string "orientation"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cover_letters_on_user_id"
+  end
+
   create_table "problems", force: :cascade do |t|
     t.string "title"
     t.string "solution"
@@ -36,7 +45,6 @@ ActiveRecord::Schema.define(version: 2019_08_02_202312) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "cover_letter_url"
   end
 
 end

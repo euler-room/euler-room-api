@@ -4,6 +4,8 @@ class User < ApplicationRecord
   validates_presence_of   :username
   validates_uniqueness_of :username, case_sensitive: true
 
+  has_one :cover_letter
+
   before_create :generate_confirmation_instructions
 
   def confirmation_token_valid?
