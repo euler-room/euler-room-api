@@ -1,0 +1,46 @@
+// Let's teach the Robots to distinguish words and numbers.
+//
+// You are given a string with words and numbers separated by whitespaces (one space).
+// The words contains only letters. You should check if the string contains three
+// words in succession. For example, the string "start 5 one two three 7 end" contains
+// three words in succession.
+//
+// Input: A string with words.
+//
+// Output: The answer as a boolean.
+//
+// Precondition: The input contains words and/or numbers. There are no mixed words (letters and digits combined).
+//
+// 0 < len(words) < 100
+//
+// threeWords("Hello World hello")
+// threeWords("He is 123 man")
+// threeWords("1 2 3 4")
+// threeWords("bla bla bla bla")
+// threeWords("Hi")
+// threeWords("one two 3 four five six 7 eight 9 ten eleven 12")
+//
+///////////////////////////////////////////////////////////////////////////////
+
+"use strict";
+
+function threeWords(data) {
+  var data = data.split(" ");
+  var count = 0;
+  data.forEach(function(string){
+    if(count >= 3) return true;
+    string.match(/[a-zA-Z]/) ? count += 1 : count = 0
+  })
+  return (count >= 3);
+}
+
+var assert = require('assert');
+
+if (!global.is_checking) {
+    assert.equal(threeWords("Hello World hello"), true, "1st example");
+    assert.equal(threeWords("He is 123 man"), false, "2nd example");
+    assert.equal(threeWords("1 2 3 4"), false, "3rd example");
+    assert.equal(threeWords("bla bla bla bla"), true, "4th example");
+    assert.equal(threeWords("Hi"), false, "Letters");
+    console.log("Coding complete? Click 'Check' to review your tests and earn cool rewards!");
+}

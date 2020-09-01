@@ -1,0 +1,150 @@
+// As input you’ll be given the coordinates of the dogs. Your task is to find the
+// distance to the nearest point from which you can kill the maximum number of
+// animals with one shot (any number of dogs on the same line can be killed with
+// one shot). Your starting position is the point (0, 0).
+//
+// If the calculated distance is an integer, return it as int, otherwise round it
+// to 2 decimal places.
+//
+// Don't worry about the situation when a few dogs on the line is behind your back
+// (dog dog you dog) - there no such situation in the tests.
+//
+// Input:
+// - coordinates of the dogs.
+//
+// Output:
+// - distance to the best spot.
+//
+// Precondition:
+// - 2 <= amount of the dogs <= 15
+// - 0 <= distance to the right place <= 20
+//
+////////////////////////////////////////////////////////////////////////////////
+
+"use strict";
+
+function wildDogs(coords) {
+  var coords_dup = Array.from(coords)
+  res = {}
+
+  coords.forEach(function(node_0, index_0){
+    res[index_0] = {}
+    coords_dup.forEach(function(node_1, index_1){
+      if(index_1 > index_0 && (index_1 - 1) < coords.length){
+        res[index_0][index_1] = getSlope(node_0, node_1)
+      }
+    })
+  })
+
+}
+
+function getSlope(a,b){
+  return Math.round((a[1] - b[1]) / (a[0] - b[0])*100)/100
+}
+
+var assert = require('assert');
+if (!global.is_checking) {
+  console.log('Example:')
+  console.log(wildDogs([[7, 122], [8, 139], [9, 156],
+                        [10, 173], [11, 190], [-100, 1]]))
+
+  // These "asserts" are used for self-checking and not for an auto-testing
+  assert.equal(wildDogs([[7, 122], [8, 139], [9, 156],
+                         [10, 173], [11, 190], [-100, 1]]), 0.18)
+
+  assert.equal(wildDogs([[6, -0.5], [3, -5], [1, -20]]), 3.63)
+
+  assert.equal(wildDogs([[10, 10], [13, 13], [21, 18]]), 0)
+
+  console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+res =
+{ '0': { '1': 17, '2': 17, '3': 17, '4': 17, '5': 1.13 },
+  '1': { '2': 17, '3': 17, '4': 17, '5': 1.28 },
+  '2': { '3': 17, '4': 17, '5': 1.42 },
+  '3': { '4': 17, '5': 1.56 },
+  '4': { '5': 1.7 },
+  '5': {} }
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+[7, 122]
+[8, 139]
+[9, 156]
+[10, 173]
+[11, 190]
+[-100, 1]
+
+
+a = {[index_0, index_1]: slope}
+
+
+var numbers = [65, 44, 12, 4];
+
+function myFunction(item, index, arr) {
+  arr[index] = item * document.getElementById("multiplyWith").value;
+  demo.innerHTML = numbers;
+}
+
+
+
+ax + by + c = 0
+
+
+
+
+var coords = [[72, 1252],[500,3],[82, 19],[9, 56],[-100, 1],[10, 173],[112, 190]]
+var coords = [[10, 10], [13, 13], [21, 18]]
+var coords = [[6, -0.5], [3, -5], [1, -20]]
+coords = coords.sort(function(a,b) {return a[0]/a[1] - b[0]/b[1]})
+
+function getM(a,b){
+  return Math.round((a[1] - b[1]) / (a[0] - b[0])*1000000)/1000000
+}
+
+function getB(p, m){
+  x = p[0]
+  y = p[1]
+  return y - (m * x)
+}
+
+function getIntercept(m, b){
+
+}
+
+var coords_dup = Array.from(coords)
+res = {}
+
+coords.forEach(function(node_0, index_0){
+  res[index_0] = {}
+  coords_dup.forEach(function(node_1, index_1){
+    if(index_1 > index_0){
+      res[index_0][index_1] = getM(node_0, node_1)
+    }
+  })
+})
+res
+var b = getB()
+
+var json = res
+
+var a1 = json.order.orderDetails.map(function(obj){ return obj.a1 });
+console.log(a1);
+
+
+
+
+
+
+

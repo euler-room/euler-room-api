@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: euler-room-api_production
-  username: euler-room-api
+  database: dfkhmdm8o9r90u
+  username: psavqsfecmdgpi
   password: <%= ENV['EULER-ROOM-API_DATABASE_PASSWORD'] %>
+  host:     ec2-54-221-215-228.compute-1.amazonaws.com

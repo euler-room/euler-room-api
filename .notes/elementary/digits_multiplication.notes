@@ -1,0 +1,42 @@
+// You are given a positive integer. Your function should calculate the product
+// of the digits excluding any zeroes.
+//
+// For example: The number given is 123405. The result will be 1*2*3*4*5=120
+// (don't forget to exclude zeroes).
+//
+// Input:
+//   A positive integer.
+//
+// Output:
+//   The product of the digits as an integer.
+//
+// Precondition:
+//   0 < number < 10^6
+//
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+"use strict";
+
+function digitsMultip(data) {
+    return data.toString().replace(/0/g, "").split("").reduce( (res, x) => res*parseInt(x), 1 );
+}
+
+digitsMultip(123405)
+digitsMultip(999)
+digitsMultip(1000)
+digitsMultip(1111)
+
+
+
+var assert = require('assert');
+
+if (!global.is_checking) {
+    assert.equal(digitsMultip(123405), 120, "1st");
+    assert.equal(digitsMultip(999), 729, "2nd");
+    assert.equal(digitsMultip(1000), 1, "3rd");
+    assert.equal(digitsMultip(1111), 1, "4th");
+    console.log("Coding complete? Click 'Check' to review your tests and earn cool rewards!");
+}
+

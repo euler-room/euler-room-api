@@ -1,0 +1,39 @@
+// You have a sequence of strings, and you’d like to determine the most frequently
+// occurring string in the sequence.
+
+// Input:
+// - a Array of strings.
+// Output:
+// - a string.
+
+
+"use strict";
+
+function mostFrequent(data) {
+  if(arguments.length == 0) return 0;
+  var counter = {}
+  data.forEach(function(word){
+    if(counter[word] === undefined) counter[word] = 0;
+    counter[word] += 1
+    console.log(counter)
+  });
+  return Object.keys(counter).reduce((a, b) => counter[a] > counter[b] ? a : b);
+}
+
+var assert = require('assert');
+
+if (!global.is_checking) {
+    console.log('Example:')
+    console.log(mostFrequent([
+        'a', 'b', 'c',
+        'a', 'b',
+        'a'
+    ]))
+
+    assert.equal(mostFrequent([
+        'a', 'b', 'c',
+        'a', 'b',
+        'a'
+    ]), 'a')
+    assert.equal(mostFrequent(['a', 'a', 'bi', 'bi', 'bi']), 'bi')
+    console.log("Coding complete? Click 'Check' to review your tests and earn cool rewards!");
